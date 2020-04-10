@@ -15,7 +15,9 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
-  exposed-modules:     Intro
+  exposed-modules:     Week1.Intro
+                     , Week2.Log
+                     , Week2.LogAnalysis
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
 
@@ -31,6 +33,8 @@ test-suite cis194-test
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   main-is:             Spec.hs
+  other-modules:       Week1.IntroSpec
+                     , Week2.LogAnalysisSpec
   build-depends:       base
                      , cis194
                      , hspec

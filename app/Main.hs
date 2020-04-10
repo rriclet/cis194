@@ -1,6 +1,7 @@
 module Main where
 
-import Intro
+import Week1.Intro
+import Week2.LogAnalysis
 
 main :: IO ()
 main = do

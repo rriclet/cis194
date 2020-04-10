@@ -1,9 +1,9 @@
-module Intro ( toDigits, 
-               toDigitsRev,
-               doubleEveryOther,
-               sumDigits,
-               validate,
-               hanoi
+module Week1.Intro ( toDigits, 
+                     toDigitsRev,
+                     doubleEveryOther,
+                     sumDigits,
+                     validate,
+                     hanoi
 ) where
 
 -- Credit card validation
