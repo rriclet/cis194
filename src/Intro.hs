@@ -2,8 +2,11 @@ module Intro ( toDigits,
                toDigitsRev,
                doubleEveryOther,
                sumDigits,
-               validate
+               validate,
+               hanoi
 ) where
+
+-- Credit card validation
 
 toDigits :: Integer -> [Integer]
 toDigits n
@@ -29,3 +32,12 @@ sumDigits (x:xs)
 
 validate :: Integer -> Bool
 validate x = (sumDigits . doubleEveryOther $ toDigits x) `mod` 10 == 0
+
+-- Tower of Hanoi
+
+type Peg = String
+type Move = (Peg, Peg)
+
+hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
+hanoi 0 _ _ _         = []
+hanoi n from to other = hanoi (n-1) from other to ++ [(from, to)] ++ hanoi (n-1) other to from

@@ -3,6 +3,9 @@ import Intro
 
 main :: IO ()
 main = hspec $ do
+
+-- Credit card validation
+
   describe "Intro.toDigits" $ do
     it "returns list of digits from a number" $ do
       toDigits 1234 `shouldBe` [1,2,3,4]
@@ -32,3 +35,11 @@ main = hspec $ do
       validate 4012888888881881 `shouldBe` True
     it "returns wheter number is invalid" $ do
       validate 4012888888881882 `shouldBe` False
+
+-- Tower of Hanoi
+
+  describe "Intro.hanoi" $ do
+    it "returns a correct list of moves for 2 discs" $ do
+      hanoi 2 "a" "b" "c" `shouldBe` [("a","c"), ("a","b"), ("c","b")]
+    it "returns a correct list of moves for 3 discs" $ do
+      hanoi 3 "a" "b" "c" `shouldBe` [("a","b"), ("a","c"), ("b","c"), ("a", "b"), ("c", "a"), ("c", "b"), ("a", "b")]

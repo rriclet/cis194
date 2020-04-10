@@ -2,12 +2,12 @@ name:                cis194
 version:             0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/githubuser/cis194#readme
+homepage:            https://github.com/rriclet/cis194#readme
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2020 Author name here
+author:              Robin Riclet
+maintainer:          robinriclet@gmail.com
+copyright:           2020 Robin Riclet
 category:            Web
 build-type:          Simple
 extra-source-files:  README.md
@@ -40,4 +40,4 @@ test-suite cis194-test
 
 source-repository head
   type:     git
-  location: https://github.com/githubuser/cis194
+  location: https://github.com/rriclet/cis194
