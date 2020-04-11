@@ -27,6 +27,13 @@ testParse :: (String -> [LogMessage])
           -> IO [LogMessage]
 testParse parse n file = take n . parse <$> readFile file
 
+testBuild :: (String -> [LogMessage])
+                  -> ([LogMessage] -> MessageTree)
+                  -> FilePath
+                  -> IO MessageTree
+testBuild parse build file
+  = build . parse <$> readFile file
+
 -- | @testWhatWentWrong p w f@ tests the log file parser @p@ and
 --   warning message extractor @w@ by running them on the log file
 --   @f@.

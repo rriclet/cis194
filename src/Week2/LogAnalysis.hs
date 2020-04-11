@@ -1,5 +1,9 @@
 module Week2.LogAnalysis ( parseMessage,
-                           parse
+                           parse,
+                           insert,
+                           build,
+                           inOrder,
+                           whatWentWrong
 ) where
 
 import Week2.Log
@@ -13,3 +17,30 @@ parseMessage m = case words m of
 
 parse :: String -> [LogMessage]
 parse t = map parseMessage $ lines t
+
+insert :: LogMessage -> MessageTree -> MessageTree
+insert (Unknown _) tree = tree
+insert m@(LogMessage _ ts _) tree = case tree of
+  Leaf                                     -> Node Leaf m Leaf
+  Node left nodeM@(LogMessage _ nodeTs _ ) right -> if   ts < nodeTs
+                                                    then Node (insert m left) nodeM right 
+                                                    else Node left nodeM (insert m right)
+
+build :: [LogMessage] -> MessageTree
+build [] = Leaf
+build l = foldr (insert) Leaf l
+
+inOrder :: MessageTree -> [LogMessage]
+inOrder tree = case tree of
+  Leaf              -> []
+  Node left m right -> inOrder left ++ [m] ++ inOrder right
+
+whatWentWrong :: [LogMessage] -> [String]
+whatWentWrong l = map show $ map getMessage $ filter isSevereError $ inOrder $ build l
+
+isSevereError :: LogMessage -> Bool
+isSevereError (LogMessage (Error c ) _ _ ) = c > 50 
+isSevereError _                            = False
+
+getMessage :: LogMessage -> String
+getMessage (LogMessage _ _ m) = m
