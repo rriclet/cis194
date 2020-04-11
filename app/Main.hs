@@ -1,8 +1,9 @@
 module Main where
 
 import Week1.Intro
+import Week2.Log
 import Week2.LogAnalysis
 
-main :: IO ()
+main :: IO [LogMessage]
 main = do
-  putStrLn "Do dome stuff"
+  testParse parse 10 "src/Week2/error.log"
