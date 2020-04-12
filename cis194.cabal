@@ -18,6 +18,7 @@ library
   exposed-modules:     Week1.Intro
                      , Week2.Log
                      , Week2.LogAnalysis
+                     , Week3.Golf
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
 
@@ -35,6 +36,7 @@ test-suite cis194-test
   main-is:             Spec.hs
   other-modules:       Week1.IntroSpec
                      , Week2.LogAnalysisSpec
+                     , Week3.GolfSpec
   build-depends:       base
                      , cis194
                      , hspec
