@@ -22,3 +22,23 @@ spec = do
   describe "Golf.nthItems" $ do
     it "returns 3th items for 'ABCDEFG'" $ do
       nthItems 3 "ABCDEFG" `shouldBe` ['C', 'F']
+
+  describe "Golf.localMaxima" $ do
+    it "returns 2 local maxima" $ do
+      localMaxima [2,9,5,6,1] `shouldBe` [9, 6]
+    it "returns 1 local maxima" $ do
+      localMaxima [2,3,4,1,5] `shouldBe` [4]
+    it "returns 0 local maxima" $ do
+      localMaxima [1,2,3,4,5] `shouldBe` []
+
+  describe "Golf.histogram" $ do
+    it "returns 4 point-histogram" $ do
+      histogram [1,1,1,5] `shouldBe` " *        \n *        \n *   *    \n=========\n0123456789\n"
+    it "returns 11 point-histogram" $ do
+      histogram [1,4,5,4,6,6,3,4,2,4,9] `shouldBe` "    *     \n    *     \n    * *   \n ******  *\n=========\n0123456789\n"
+    it "returns 2 point-histogram" $ do
+      histogram [3,5] `shouldBe` "   * *    \n=========\n0123456789\n"
+
+  describe "Golf.plotLine" $ do
+    it "returns 2 point-line" $ do
+      plotLine 10 [4,6] `shouldBe` "    * *   \n"
