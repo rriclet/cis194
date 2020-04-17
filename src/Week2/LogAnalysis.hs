@@ -28,7 +28,7 @@ insert m@(LogMessage _ ts _) tree = case tree of
 
 build :: [LogMessage] -> MessageTree
 build [] = Leaf
-build l = foldr (insert) Leaf l
+build l = foldr insert Leaf l
 
 inOrder :: MessageTree -> [LogMessage]
 inOrder Leaf                = []

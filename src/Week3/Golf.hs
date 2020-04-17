@@ -8,7 +8,7 @@ module Week3.Golf ( skips,
 import Data.List
 
 skips :: [a] -> [[a]]
-skips l = snd $ mapAccumL (\x y -> (x + 1, nthItems x y)) 1 $ take (length l) (repeat l) 
+skips l = snd $ mapAccumL (\x y -> (x + 1, nthItems x y)) 1 $ replicate (length l) l 
 
 nthItems :: Int -> [a] -> [a]
 nthItems n l

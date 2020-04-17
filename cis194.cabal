@@ -19,6 +19,7 @@ library
                      , Week2.Log
                      , Week2.LogAnalysis
                      , Week3.Golf
+                     , Week4.Wholemeal
   build-depends:       base >= 4.7 && < 5
   default-language:    Haskell2010
 
@@ -37,6 +38,7 @@ test-suite cis194-test
   other-modules:       Week1.IntroSpec
                      , Week2.LogAnalysisSpec
                      , Week3.GolfSpec
+                     , Week4.WholemealSpec
   build-depends:       base
                      , cis194
                      , hspec
