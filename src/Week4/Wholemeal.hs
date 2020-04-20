@@ -4,7 +4,13 @@ module Week4.Wholemeal ( fun1
                        , fun2'
                        , Tree(Leaf, Node)
                        , foldTree
+                       , xor
+                       , map'
+                       , myFoldl
+                       , sieveSundaram
 ) where
+
+import Data.List
 
 fun1 :: [Integer] -> Integer
 fun1 [] = 1
@@ -42,3 +48,21 @@ insertTree x t = case t of
                                        if lHeight <= rHeight 
                                        then Node (lHeight+1) (insertTree x l) a r
                                        else Node (rHeight+1) l a (insertTree x r)
+
+xor :: [Bool] -> Bool
+xor = odd . foldr (\x y -> if x then y+1 else y) 0
+
+map' :: (a -> b) -> [a] -> [b]
+map' f = foldr (\x y -> f x : y) []
+
+-- If the f given is not associative, foldr & foldl can have different results
+-- (-) is not associative whereas (+) is
+-- https://stackoverflow.com/questions/6172004/writing-foldl-using-foldr
+-- Not yet solved, too advanced I think
+myFoldl :: (a -> b -> a) -> a -> [b] -> a
+myFoldl f base xs = base
+
+sieveSundaram :: Integer -> [Integer]
+sieveSundaram n = map (\x -> x*2 + 1) $ [1..n] \\ toRemove
+                    where toRemove = [x + y + 2*x*y | x <- [1..n], y <- [1..n]]
+
