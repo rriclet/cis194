@@ -28,17 +28,12 @@ instance HasVars VarExprT where
 
 instance HasVars (M.Map String Integer -> Maybe Integer) where
   var = M.lookup
-{-
-I looked up the answer online but I can't understand the syntax.
-Maybe I need more knowledge of Haskell. For example, the answer for add is :
-  add x y m = liftM2 (+) (x m) (y m)
-Where is this m coming from ?
 
 instance Expr (M.Map String Integer -> Maybe Integer) where
-  lit x    = M.lookup "a"  
-  add x y = x + y
-  mul x y = x * y
--}
+  lit x m   = Just x  
+  add x y m = (+) <$> x m <*> y m
+  mul x y m = (*) <$> x m <*> y m
+
 withVars :: [(String, Integer)]
          -> (M.Map String Integer -> Maybe Integer)
          -> Maybe Integer
