@@ -25,6 +25,7 @@ library
                      , Week5.Expr
                      , Week5.ExprT
                      , Week5.StackVM
+                     , Week6.Fibonacci
   other-modules:       Week5.Parser
   build-depends:       base >= 4.7 && < 5
                      , containers
@@ -47,6 +48,7 @@ test-suite cis194-test
                      , Week3.GolfSpec
                      , Week4.WholemealSpec
                      , Week5.CalcSpec
+                     , Week6.FibonacciSpec
   build-depends:       base
                      , cis194
                      , hspec
